@@ -1,0 +1,25 @@
+rules:
+  - name: customer_order_id
+    pattern_type: regex
+    pattern: "ORD-[0-9]{8,12}"
+    replacement: "[ORDER_ID]"
+
+  - name: internal_sku_price
+    pattern_type: regex
+    pattern: "Cost\\s+Price[\\s:]+[₹Rs\\.\\s]*[\\d,]+"
+    replacement: "Cost Price: [COST_REDACTED]"
+
+  - name: supplier_discount
+    pattern_type: regex
+    pattern: "Supplier\\s+Discount[\\s:]+[\\d]+%?"
+    replacement: "Supplier Discount: [DISCOUNT_REDACTED]"
+
+  - name: payment_gateway_key
+    pattern_type: regex
+    pattern: "(rzp|stripe|paytm)[_-]?(live|test)[_-]?[\\w]{20,}"
+    replacement: "[PAYMENT_KEY_REDACTED]"
+
+  - name: customer_wallet_balance
+    pattern_type: keyword
+    pattern: "wallet balance"
+    replacement: "[WALLET_BALANCE_REDACTED]"

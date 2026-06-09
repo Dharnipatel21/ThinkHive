@@ -1,0 +1,30 @@
+rules:
+  - name: internal_ip
+    pattern_type: regex
+    pattern: "192\\.168\\.[0-9]+\\.[0-9]+"
+    replacement: "[INTERNAL_IP]"
+
+  - name: api_key
+    pattern_type: regex
+    pattern: "(api[_-]?key|apikey|api[_-]?secret)[\\s:=]+[\\w\\-]+"
+    replacement: "[API_KEY_REDACTED]"
+
+  - name: employee_id
+    pattern_type: regex
+    pattern: "EMP-[0-9]{4,6}"
+    replacement: "[EMPLOYEE_ID]"
+
+  - name: server_name
+    pattern_type: regex
+    pattern: "(prod|dev|staging|uat)-server-[\\w\\-]+"
+    replacement: "[SERVER_NAME]"
+
+  - name: db_password
+    pattern_type: regex
+    pattern: "(password|passwd|pwd)[\\s:=]+[\\S]+"
+    replacement: "[PASSWORD_REDACTED]"
+
+  - name: aws_access_key
+    pattern_type: regex
+    pattern: "AKIA[0-9A-Z]{16}"
+    replacement: "[AWS_KEY_REDACTED]"

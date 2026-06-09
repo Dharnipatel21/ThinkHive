@@ -1,0 +1,25 @@
+rules:
+  - name: equipment_serial
+    pattern_type: regex
+    pattern: "(SN|S/N|Serial)[\\s:.-]+[A-Z0-9\\-]{6,20}"
+    replacement: "[EQUIPMENT_SERIAL]"
+
+  - name: process_parameter
+    pattern_type: regex
+    pattern: "Process\\s+Code[\\s:]+[A-Z0-9\\-]+"
+    replacement: "[PROCESS_CODE]"
+
+  - name: supplier_code
+    pattern_type: regex
+    pattern: "Supplier[\\s]+ID[\\s:]+[A-Z0-9\\-]+"
+    replacement: "[SUPPLIER_ID]"
+
+  - name: batch_number
+    pattern_type: regex
+    pattern: "Batch[\\s]+No\\.?[\\s:]+[A-Z0-9\\-]+"
+    replacement: "[BATCH_NUMBER]"
+
+  - name: internal_cost
+    pattern_type: regex
+    pattern: "Manufacturing\\s+Cost[\\s:]+[₹Rs\\.\\s]*[\\d,]+"
+    replacement: "Manufacturing Cost: [COST_REDACTED]"
